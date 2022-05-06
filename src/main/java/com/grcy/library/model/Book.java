@@ -2,12 +2,14 @@ package com.grcy.library.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 /**
  * @Entity to pierwsza OBOWIĄZKOWA anotacja (JPA / Hibernate) do odwzorowania klasy na tabelę
  * Klasa która ma @Entity to ENCJA - czyli klasa która odwzorowuje tabelę bazodanową
  */
+@Table(name = "books")
 public class Book {
 
     @Id
