@@ -2,6 +2,7 @@ package com.grcy.library.dao;
 
 import com.grcy.library.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Optional<Book> findBooksByAuthorAndTitle(String author, String title);
 
     List<Book> findBooksByAuthor(String author);
+
+    //@uery - HQL albo JPQL (HQL to jedna z implementacji JPQL)
+    //HQL - Hibenate Query Language
+    //JPQL - JPA Query Language
+    //@Query + "nic" albo plus "nativeQuery=false" - HQL / JPQL
+    //@Query + "nativeQuery=true" - SQL
+    //@NativeQuery - SQL
+    @Query(value = "Select nextval('hibernate_sequence')", nativeQuery = true)
+    Long getNextSeriesId();
 }

@@ -47,6 +47,10 @@ public class BookService {
     }
 
     public Book saveBook(BookDto bookDto) {
-        return null;
+
+        Long id = bookRepository.getNextSeriesId();
+        Book book = new Book(id, bookDto.getTitle(), bookDto.getAuthor());
+
+        return bookRepository.save(book);
     }
 }

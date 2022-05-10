@@ -1,5 +1,6 @@
 package com.grcy.library.controller.rest;
 
+import com.grcy.library.controller.BookDto;
 import com.grcy.library.model.Book;
 import com.grcy.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class BookRestController {
         this.bookService = bookService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET, value = "")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
@@ -26,5 +27,10 @@ public class BookRestController {
     @GetMapping(value = "/{id}")
     public Book getBookById(@PathVariable(name = "id") String id) {
         return bookService.getById(Long.parseLong(id));
+    }
+
+    @PostMapping
+    public Book addBook(@RequestBody BookDto bookDto) {
+        return bookService.saveBook(bookDto);
     }
 }
