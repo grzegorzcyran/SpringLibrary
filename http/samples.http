@@ -1,0 +1,8 @@
+
+###
+### All books
+http://localhost:8080/library/books/
+
+###
+### Book with given id
+http://localhost:8080/library/books/1
