@@ -16,3 +16,16 @@ Content-Type: application/json
 "author": "G.R.R. Martin",
 "title":  "Gra o tron"
 }
+
+### Add new Book
+PUT http://localhost:8080/library/books
+Content-Type: application/json
+
+{
+  "id": 11,
+  "author": "Andrzej Sapkowski",
+  "title":  "Trylogia husycka"
+}
+
+###
+PATCH http://localhost:8080/library/books/11/author?author=Jedrus Sapkowski

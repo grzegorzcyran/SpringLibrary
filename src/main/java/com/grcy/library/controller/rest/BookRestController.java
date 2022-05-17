@@ -29,8 +29,21 @@ public class BookRestController {
         return bookService.getById(Long.parseLong(id));
     }
 
+    //POST służy do wprowadzania nowych rekordów (encji)
     @PostMapping
     public Book addBook(@RequestBody BookDto bookDto) {
         return bookService.saveBook(bookDto);
+    }
+
+    //PUT służy do korekty całego rekordu (encji)
+    @PutMapping
+    public Book modifyBook(@RequestBody BookDto bookDto) {
+        return bookService.saveBook(bookDto);
+    }
+
+    //PATCH służy do poprawiania pojedynczych pól rekordu (encji)
+    @PatchMapping(value = "/{id}/author")
+    public Book modifyAuthor(@PathVariable("id") String id, @RequestParam(value = "author") String author) {
+        return bookService.modifyAuthor(Long.valueOf(id), author);
     }
 }
