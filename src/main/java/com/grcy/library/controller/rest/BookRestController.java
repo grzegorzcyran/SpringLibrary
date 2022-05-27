@@ -46,4 +46,9 @@ public class BookRestController {
     public Book modifyAuthor(@PathVariable("id") String id, @RequestParam(value = "author") String author) {
         return bookService.modifyAuthor(Long.valueOf(id), author);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable String id){
+        bookService.deleteBook(id);
+    }
 }

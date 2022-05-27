@@ -29,3 +29,6 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:8080/library/books/11/author?author=Jedrus Sapkowski
+
+###
+DELETE http://localhost:8080/library/books/10

@@ -81,4 +81,37 @@ public class BookService {
        }
        return null;
     }
+
+    public void deleteBook(String id) {
+        Optional<Book> found = bookRepository.findById(Long.parseLong(id));
+        if(found.isPresent()) {
+            System.out.println("Removing book with id " + id);
+            bookRepository.delete(found.get());
+            return;
+        }
+        System.out.println("Not found book for id: " + id);
+    }
+
+    public Book deleteBookAndReturnIt(String id) {
+        Optional<Book> found = bookRepository.findById(Long.parseLong(id));
+        if(found.isPresent()) {
+            Book bookToDelete = found.get();
+            System.out.println("Removing book with id " + id);
+            bookRepository.delete(bookToDelete);
+            return bookToDelete;
+        }
+        System.out.println("Not found book for id: " + id);
+        return null;
+    }
+
+    public Optional<Book> deleteBookAndReturnOptionalBook(String id) {
+        Optional<Book> found = bookRepository.findById(Long.parseLong(id));
+        if(found.isPresent()) {
+            System.out.println("Removing book with id " + id);
+            bookRepository.delete(found.get());
+            return found;
+        }
+        System.out.println("Not found book for id: " + id);
+        return Optional.empty();
+    }
 }
